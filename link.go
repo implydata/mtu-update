@@ -74,7 +74,7 @@ func getPrimaryLink() (*linkInfo, error) {
 
 	for _, link := range links {
 		if link.Type() == innerLinkType {
-			addrs, err := netlink.AddrList(link, netlink.FAMILY_V6)
+			addrs, err := netlink.AddrList(link, netlink.FAMILY_V4)
 			if err != nil {
 				scopedLog.Infof("Failed to fetch address info for link %s", link.Attrs().Name)
 				continue

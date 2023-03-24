@@ -1,2 +1,3 @@
 all:
-	docker build -t cilium/mtu-update .
+	docker buildx build -t "repo.cnc.imply.io/docker/cilium/mtu-update:v1.2" . \
+		--platform=linux/amd64,linux/arm64 --push

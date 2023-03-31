@@ -76,10 +76,14 @@ func newEndpointInfoFromEndpoints(eps []*models.Endpoint) *endpointInfo {
 		netConfig := ep.Status.Networking
 		for _, addr := range netConfig.Addressing {
 			if !result.addIP(addr.IPV4) {
-				log.Warnf("Skipping invalid IP %s", addr.IPV4)
+				log.Warnf("Skipping invalid IPv4 %s", addr.IPV4)
+			} else {
+				log.Infof("Added IPv4 %s", addr.IPV4)
 			}
 			if !result.addIP(addr.IPV6) {
-				log.Warnf("Skipping invalid IP %s", addr.IPV6)
+				log.Warnf("Skipping invalid IPv6 %s", addr.IPV6)
+			} else {
+				log.Infof("Added IPv6 %s", addr.IPV6)
 			}
 		}
 		result.links[netConfig.InterfaceName] = struct{}{}

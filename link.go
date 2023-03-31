@@ -78,6 +78,8 @@ func getPrimaryLink() (*linkInfo, error) {
 			if err != nil {
 				scopedLog.Infof("Failed to fetch address info for link %s", link.Attrs().Name)
 				continue
+			} else {
+				scopedLog.Infof("Fetch address info for link %s: %v", link.Attrs().Name, addrs)
 			}
 			return newLinkInfo(link, addrs), nil
 		}
